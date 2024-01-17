@@ -1,1 +1,16 @@
 /* You can add global styles to this file, and also import other style files */
+.title-blog {
+    font-family: "Unna", serif;
+}
+
+.text-color {
+    color: #ce8460;
+}
+
+.quote {
+    font-family: 'Lora', serif;
+}
+
+.gray-bg {
+    background-color: rgb(245, 245, 245);
+}
