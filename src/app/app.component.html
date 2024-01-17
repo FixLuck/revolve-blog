@@ -1,5 +1,13 @@
-<app-header></app-header>
-<app-container></app-container>
+<app-header 
+(buttonClick)="onButtonClick($event)"></app-header>
+
+<div *ngIf="clickPost">
+    <app-blog-posts></app-blog-posts>
+</div>
+<div *ngIf="!clickPost">
+    <app-container></app-container>
+</div>
+
 <app-footer></app-footer>
-<app-blog-posts></app-blog-posts>
-<app-contact></app-contact>
+
+<!-- <app-contact></app-contact> -->

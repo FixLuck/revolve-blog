@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterOutlet } from '@angular/router';
 import { HeaderComponent } from './header/header.component';
@@ -16,4 +16,11 @@ import { ContactComponent } from './contact/contact.component';
 })
 export class AppComponent {
   title = 'revolve-blog';
+
+  clickPost = false;
+
+  onButtonClick(click: boolean) {
+    this.clickPost = click;
+    
+  }
 }

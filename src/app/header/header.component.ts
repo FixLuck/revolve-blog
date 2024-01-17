@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component } from '@angular/core';
+import { Component, Output,EventEmitter } from '@angular/core';
 
 @Component({
   selector: 'app-header',
@@ -10,4 +10,9 @@ import { Component } from '@angular/core';
 })
 export class HeaderComponent {
 
+  @Output() buttonClick = new EventEmitter<boolean>;
+
+  showPost() {
+    this.buttonClick.emit(true);
+  }
 }
