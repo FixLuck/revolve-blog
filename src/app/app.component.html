@@ -1,13 +1,18 @@
 <app-header 
-(buttonClick)="onButtonClick($event)"></app-header>
+(clickPost)="onPostClick($event)" (clickHome)="onHomeClick($event)"
+></app-header>
 
-<div *ngIf="clickPost">
+<div *ngIf="clickPost; else container">
     <app-blog-posts></app-blog-posts>
 </div>
-<div *ngIf="!clickPost">
+<div *ngIf="clickHome">
     <app-container></app-container>
 </div>
+<ng-template #container>
+    <app-container></app-container>
+</ng-template>
 
 <app-footer></app-footer>
+<!-- <app-about></app-about> -->
 
 <!-- <app-contact></app-contact> -->

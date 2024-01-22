@@ -6,11 +6,12 @@ import { ContainerComponent } from './container/container.component';
 import { FooterComponent } from './footer/footer.component';
 import { BlogPostsComponent } from './blog-posts/blog-posts.component';
 import { ContactComponent } from './contact/contact.component';
+import { AboutComponent } from './about/about.component';
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [CommonModule, RouterOutlet, HeaderComponent, ContainerComponent, FooterComponent, BlogPostsComponent, ContactComponent],
+  imports: [CommonModule, RouterOutlet, HeaderComponent, ContainerComponent, FooterComponent, BlogPostsComponent, ContactComponent, AboutComponent],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
 })
@@ -18,9 +19,13 @@ export class AppComponent {
   title = 'revolve-blog';
 
   clickPost = false;
+  clickHome = false;
 
-  onButtonClick(click: boolean) {
+  onPostClick(click: boolean) {
     this.clickPost = click;
-    
+  }
+
+  onHomeClick(click: boolean) {
+    this.clickHome = click;
   }
 }

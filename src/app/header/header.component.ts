@@ -10,9 +10,14 @@ import { Component, Output,EventEmitter } from '@angular/core';
 })
 export class HeaderComponent {
 
-  @Output() buttonClick = new EventEmitter<boolean>;
+  @Output() clickPost = new EventEmitter<boolean>();
+  @Output() clickHome = new EventEmitter<boolean>();
 
   showPost() {
-    this.buttonClick.emit(true);
+    this.clickPost.emit(true);
+  }
+
+  showHome() {
+    this.clickHome.emit(true);
   }
 }
