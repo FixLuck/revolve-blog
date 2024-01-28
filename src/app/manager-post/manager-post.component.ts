@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnChanges, OnInit, SimpleChanges } from '@angular/core';
 import { Post } from '../model/post';
 import { PostsService } from '../services/posts.service';
 import { ReactiveFormsModule } from '@angular/forms';
@@ -14,7 +14,7 @@ import { PaginationComponent } from './pagination/pagination.component';
   templateUrl: './manager-post.component.html',
   styleUrl: './manager-post.component.css'
 })
-export class ManagerPostComponent implements OnInit {
+export class ManagerPostComponent implements OnInit, OnChanges {
   constructor(private postServices: PostsService, private fb: FormBuilder) {}
 
   postList: Post[] = [];
@@ -63,6 +63,7 @@ export class ManagerPostComponent implements OnInit {
     return this.postList.slice(start, end);
   }
 
+
   changePage(page: number) {
     this.currentPage = page;
   }
@@ -73,6 +74,51 @@ export class ManagerPostComponent implements OnInit {
 
   sortByDate() {
     this.postList.sort((a, b) => a.date?.getTime() - b.date?.getTime());
-  } 
+  }
+
+  display: boolean = false;
+
+  addNewPost() {
+    const newPost: Post = {
+      categoryName: this.updateForm.controls.catName.value!,
+      content: this.updateForm.controls.content.value!,
+      title: this.updateForm.controls.titlePost.value!,
+      date: new Date(),
+      image: ''
+    }
+
+    this.postList = [...this.postList, newPost];
+
+    
+  }
+
+  clearForm() {
+    this.updateForm.controls.catName.setValue('');
+    this.updateForm.controls.content.setValue('');
+    this.updateForm.controls.titlePost.setValue('');
+  }
+
+  filterPost: Post[] = []  ;
+
+  filterBy(input: string) {
+    if(!input) {
+      this.filterPost = this.postList;
+      return;
+    }
+
+    this.filterPost = this.postList.filter(
+      post => post?.title.toLowerCase().includes(input.toLowerCase())
+    );
+    
+    console.log(this.filterPost);
+    
+    
+    
+  }
+
+  ngOnChanges(changes: SimpleChanges): void {
+    console.log(changes);
+    
+  }
 
 }

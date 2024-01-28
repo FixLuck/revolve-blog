@@ -22,14 +22,9 @@ import { ManagerPostComponent } from './manager-post/manager-post.component';
 export class AppComponent {
   title = 'revolve-blog';
 
-  clickPost = false;
-  clickHome = false;
+  clickLogin = false;
 
-  onPostClick(click: boolean) {
-    this.clickPost = click;
-  }
-
-  onHomeClick(click: boolean) {
-    this.clickHome = click;
+  handleClick(click: boolean) {
+    this.clickLogin = click;
   }
 }

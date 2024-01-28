@@ -1,9 +1,19 @@
-<div class="container">
+<div class="container my-5">
     <h1 class="text-primary">Manager Post</h1>
     <div class="row">
         <div class="col-lg-10">
             <button class="btn btn-primary me-3" (click)="sortByCat()">Sort By Category</button>
-            <button class="btn btn-primary" (click)="sortByDate()">Sort By Date</button>
+            <button class="btn btn-primary me-3" (click)="sortByDate()">Sort By Date</button>
+            <button class="btn btn-primary me-3" data-bs-toggle="modal" data-bs-target="#addModal">
+           
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-plus-square-fill" viewBox="0 0 16 16">
+                    <path d="M2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2zm6.5 4.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3a.5.5 0 0 1 1 0"/>
+                  </svg>
+            </button>
+
+            <input type="text" class="me-3" id="filter" #filterValue>
+            <button class="btn btn-secondary" (click)="filterBy(filterValue.value)">Search</button>
+
             <table class="table">
                 <thead>
                     <tr>
@@ -51,7 +61,7 @@
     </div>
 </div>
 
-<!-- Adjust modal -->
+<!-- Adjust modal update -->
 <div class="modal fade" id="updateModal" tabindex="-1" aria-labelledby="updateModal" aria-hidden="true">
     <div class="modal-dialog modal-lg">
         <div class="modal-content">
@@ -81,6 +91,41 @@
                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
                 <button (click)="updatePost()" type="button" data-bs-dismiss="modal"
                     class="btn btn-primary">Update</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Modal add -->
+<div class="modal fade" id="addModal" tabindex="-1" aria-labelledby="addModal" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="modal-title ms-3 text-primary">New Post</h1>
+            </div>
+            <div class="modal-header">
+                <form [formGroup]="updateForm">
+                    <div class="form-group">
+                        <label for="" class="form-label">Category</label>
+                        <input type="text" class="form-control" formControlName="catName">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="" class="form-label">Title</label>
+                        <input type="text" class="form-control" formControlName="titlePost">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="" class="form-label">Content</label>
+                        <textarea name="" id="" cols="100" rows="5" class="form-control"
+                            formControlName="content"></textarea>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                <button (click)="addNewPost()" type="button" data-bs-dismiss="modal"
+                    class="btn btn-primary">Add</button>
             </div>
         </div>
     </div>

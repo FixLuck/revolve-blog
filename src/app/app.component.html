@@ -20,4 +20,9 @@
 <!-- <app-contact></app-contact> -->
 
 
-<app-manager-post></app-manager-post>
+<!-- <app-manager-post></app-manager-post> -->
+
+<app-header *ngIf="!clickLogin" (clickLogin)="handleClick($event)"></app-header>
+<router-outlet></router-outlet>
+<!-- <app-container></app-container> -->
+<app-footer *ngIf="!clickLogin"></app-footer>
