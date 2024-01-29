@@ -26,19 +26,24 @@
                         <form action="" class="contact-form" id="contact-form">
                             <div class="row">
                                 <div class="col-md-12">
-                                    <div class="form-group">
-                                        <label for="" class="form-label">Your Name (required)</label>
-                                        <input type="text" class="form-control" required>
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="" class="form-label">Your Email (required)</label>
-                                        <input type="email" class="form-control" required>
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="" class="form-label">Your Message</label>
-                                        <textarea name="" id="" cols="30" rows="7" class="form-control"></textarea>
-                                    </div>
-                                    <button type="submit" class="btn btn-primary mt-3">SEND MESSAGE</button>
+                                    <form [formGroup]="contactForm">
+                                        <div class="form-group" >
+                                            <label for="" class="form-label">Your Name (required)</label>
+                                            <input [class.is-invalid]="contactForm.get('name')?.invalid && contactForm.get('name')?.touched" 
+                                            type="text" class="form-control" formControlName="name">
+                                            <small *ngIf="contactForm.get('name')?.invalid && contactForm.get('name')?.touched" class="text-danger">User name is required</small>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="" class="form-label">Your Email (required)</label>
+                                            <input [class.is-invalid]="contactForm.get('email')?.invalid && contactForm.controls.email.touched" type="email" class="form-control"  formControlName="email">
+                                            <small class="text-danger" *ngIf="contactForm.controls.email.errors?.['email']">Incorrect email format.</small>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="" class="form-label">Your Message</label>
+                                            <textarea name="" id="" cols="30" rows="7" class="form-control"></textarea>
+                                        </div>
+                                        <button type="submit" class="btn btn-primary mt-3">SEND MESSAGE</button>
+                                    </form>
                                 </div>
                             </div>
                         </form>
